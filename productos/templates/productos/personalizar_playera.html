@@ -1,0 +1,139 @@
+<!-- productos/templates/productos/personalizar_playera.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <title>Personalizar {{ playera.nombre }}</title>
+    <style>
+        .color-preview {
+            width: 250px;
+            height: 250px;
+            margin-top: 10px;
+            border: 1px solid #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .name-preview {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .image-preview {
+            width: 100px;
+            height: 100px;
+            margin-top: 10px;
+            border: 1px solid #000;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <h1>Personalizar {{ playera.nombre }}</h1>
+    <p>Color: {{ playera.color_principal }}</p>
+    <p>Talla: {{ playera.talla }}</p>
+    <p>Precio base: ${{ playera.precio }}</p>
+
+    <h2>Personalización</h2>
+    <form action="{% url 'productos:personalizar_playera' playera.id %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="nombre_personalizado">Nombre en la playera:</label>
+    <input 
+        type="text" 
+        id="nombre_personalizado" 
+        name="nombre_personalizado" 
+        value="{{ playera.nombre }}" 
+        required 
+        oninput="updateNamePreview()">
+    
+    <label for="numero">Número:</label>
+    <input 
+        type="number" 
+        id="numero" 
+        name="numero_personalizado" 
+        value="{{ playera.numero_personalizado|default:0 }}" 
+        min="0" 
+        max="99" 
+        required 
+        onchange="updateNumberPreview()">
+
+    {% if playera.activo %}
+        <label for="color">Color:</label>
+        <input 
+            type="color" 
+            id="color" 
+            name="color_personalizado" 
+            value="{{ playera.color_personalizado|default:'#FFFFFF' }}" 
+            onchange="updateColorPreview()">
+
+        <label for="escudo">Subir escudo (Imagen):</label>
+        <input 
+            type="file" 
+            id="escudo" 
+            name="escudo" 
+            accept="image/*" 
+            onchange="updateImagePreview()">
+    {% endif %}
+
+    <div class="color-preview" id="color-preview">
+        <span id="name-preview" class="name-preview">
+            {{ playera.nombre|default:'Nombre' }}
+        </span>
+        <span id="numero-preview">
+            {{ playera.numero_personalizado|default:'00' }}
+        </span>
+    </div>
+
+    <div class="image-preview" id="image-preview">
+        {% if playera.escudo %}
+            <div style="background-image: url('{{ playera.escudo.url }}');"></div>
+        {% endif %}
+    </div>
+
+    <button type="submit">Guardar Personalización</button>
+</form>
+
+
+    <script>
+        function updateColorPreview() {
+            var color = document.getElementById('color').value;
+            document.getElementById('color-preview').style.backgroundColor = color;
+        }
+
+        function updateNumberPreview() {
+            var numero = document.getElementById('numero').value;
+            document.getElementById('numero-preview').textContent = numero || '00';
+        }
+
+        function updateNamePreview() {
+            var nombre = document.getElementById('nombre_personalizado').value;
+            document.getElementById('name-preview').textContent = nombre || 'Nombre';
+        }
+
+        function updateImagePreview() {
+            var file = document.getElementById('escudo').files[0];
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                document.getElementById('image-preview').style.backgroundImage = "url('" + e.target.result + "')";
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+
+        window.onload = function() {
+            updateColorPreview();
+            updateNumberPreview();
+            updateNamePreview();
+        };
+    </script>
+{% endblock %}

@@ -1,0 +1,47 @@
+/* Estilo del contenedor del menú */
+nav ul {
+    list-style-type: none;
+    background-color: #333;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Usa Flexbox para alineación horizontal */
+}
+
+/* Estilo de los elementos del menú */
+nav ul li {
+    float: left;
+}
+
+/* Estilo de los enlaces del menú */
+nav ul li a, nav ul li form button {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    border: none; /* Elimina los bordes del botón */
+    background: none; /* Elimina el fondo del botón */
+    cursor: pointer; /* Cambio de cursor para el botón */
+    font-size: 16px;
+}
+
+/* Cambiar el color de fondo cuando el enlace o botón es hover */
+nav ul li a:hover, nav ul li form button:hover {
+    background-color: #111;
+}
+
+/* Asegurar que el formulario no tenga márgenes ni bordes */
+nav ul li form {
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo para los botones dentro de los formularios */
+nav ul li form button {
+    background: none;
+    color: inherit;
+    font: inherit;
+    padding: 14px 16px;
+    cursor: pointer;
+}

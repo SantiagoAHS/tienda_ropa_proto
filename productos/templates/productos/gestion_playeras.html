@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Gestionar Playeras{% endblock %}
+
+{% block content %}
+    <h1>Gestionar Playeras</h1>
+
+    <!-- Formulario para crear o editar playera -->
+    <h2>{% if form.instance.pk %}Editar Playera{% else %}Agregar nueva Playera{% endif %}</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        {% if form.instance.pk %}
+            <button type="submit" class="btn">Guardar cambios</button>
+        {% else %}
+            <button type="submit" class="btn">Agregar Playera</button>
+        {% endif %}
+    </form>
+
+    <h2>Lista de Playeras</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Equipo</th>
+                <th>Color</th>
+                <th>Talla</th>
+                <th>Precio</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for playera in playeras %}
+                <tr>
+                    <td>{{ playera.nombre }}</td>
+                    <td>{{ playera.equipo }}</td>
+                    <td>{{ playera.color_principal }}</td>
+                    <td>{{ playera.talla }}</td>
+                    <td>${{ playera.precio }}</td>
+                    <td>
+                        <!-- Botón para editar -->
+                        <form method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <input type="hidden" name="editar" value="{{ playera.id }}">
+                            <button type="submit" class="btn">Editar</button>
+                        </form>
+                        <!-- Botón para eliminar -->
+                        <form method="post" style="display:inline;" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta playera?');">
+                            {% csrf_token %}
+                            <input type="hidden" name="eliminar" value="{{ playera.id }}">
+                            <button type="submit" class="btn">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

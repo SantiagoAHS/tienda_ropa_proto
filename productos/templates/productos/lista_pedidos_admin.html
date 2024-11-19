@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Panel de Administración de Pedidos</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre del Usuario</th>
+        <th>Personalización</th>
+        <th>Estado</th>
+        <th>Fecha de Creación</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for pedido in pedidos %}
+        <tr>
+          <td>{{ pedido.usuario.username }}</td>
+          <td>{{ pedido.personalizacion.nombre_personalizado }}</td>
+          <td>{{ pedido.estado }}</td>
+          <td>{{ pedido.fecha_creacion }}</td>
+          <td>
+            <form method="POST" action="{% url 'productos:actualizar_estado_pedido' pedido.id %}">
+              {% csrf_token %}
+              <select name="estado">
+                <option value="En espera" {% if pedido.estado == 'En espera' %}selected{% endif %}>En espera</option>
+                <option value="Completado" {% if pedido.estado == 'Completado' %}selected{% endif %}>Completado</option>
+                <option value="Cancelado" {% if pedido.estado == 'Cancelado' %}selected{% endif %}>Cancelado</option>
+              </select>
+              <button type="submit">Actualizar Estado</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

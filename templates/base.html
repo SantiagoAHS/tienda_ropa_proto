@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Inicio{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <!-- Enlace "Inicio" que redirige según el estado de autenticación -->
+                {% if user.is_authenticated %}
+                    {% if request.session.tipo_usuario == 'Administrador' %}
+                        <li><a href="{% url 'usuarios:panel_administrador' %}">Inicio</a></li>
+                        <li><a href="{% url 'productos:gestion_playeras' %}">Gestion Playeras</a></li>
+                        <li><a href="{% url 'productos:lista_pedidos_admin' %}">Gestion Pedidos</a></li>
+                    {% elif request.session.tipo_usuario == 'Cliente' %}
+                        <li><a href="{% url 'usuarios:panel_cliente' %}">Inicio</a></li>
+                        <li><a href="{% url 'productos:lista_pedidos' %}">Pedidos</a></li>
+                    {% endif %}
+                {% else %}
+                    <!-- Si no está autenticado, redirige a la página de inicio general -->
+                    <li><a href="{% url 'home' %}">Inicio</a></li>
+                {% endif %}
+
+                {% if user.is_authenticated %}
+                    <li>
+                        <form action="{% url 'usuarios:logout' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn">Cerrar sesión</button>
+                        </form>
+                    </li>
+                {% else %}
+                    <li><a href="{% url 'usuarios:login' %}">Login</a></li>
+                {% endif %}
+                <li><a href="{% url 'productos:lista_playeras' %}">Productos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        <!-- Aquí puedes incluir el contenido principal de la página -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <!-- Opcional: Información de pie de página -->
+    </footer>
+</body>
+</html>

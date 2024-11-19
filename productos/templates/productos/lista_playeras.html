@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Playeras{% endblock %}
+
+{% block content %}
+    <h1>Lista de Playeras</h1>
+    <ul>
+        {% for producto in productos %}
+            <li>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'productos:personalizar_playera' producto.id %}">{{ producto.nombre }} - ${{ producto.precio }}</a>
+                {% else %}
+                    <span style="color: gray; cursor: not-allowed;">{{ producto.nombre }} - ${{ producto.precio }} (Inicia sesión para personalizar)</span>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

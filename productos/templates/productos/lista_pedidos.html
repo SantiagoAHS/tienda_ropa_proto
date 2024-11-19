@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Pedidos{% endblock %}
+
+{% block content %}
+    <h1>Lista de Pedidos</h1>
+
+    <ul>
+        {% for pedido in pedidos %}
+            <li>
+                <strong>Nombre:</strong> {{ pedido.personalizacion.nombre_personalizado }}<br>
+                <strong>Número:</strong> {{ pedido.personalizacion.numero_personalizado }}<br>
+                <strong>Color:</strong>
+                
+                <strong>Escudo:</strong>
+                {% if pedido.personalizacion.escudo %}
+                    <img src="{{ pedido.personalizacion.escudo.url }}" alt="Escudo" style="width: 50px; height: 50px;">
+                {% else %}
+                    No disponible
+                {% endif %}
+                <br>
+                <strong>Fecha de creación:</strong> {{ pedido.personalizacion.fecha_creacion|date:"d/m/Y H:i" }}<br>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
