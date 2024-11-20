@@ -14,7 +14,7 @@ nav ul li {
 }
 
 /* Estilo de los enlaces del menú */
-nav ul li a, nav ul li form button {
+nav ul li a, nav ul li form .menu-button {
     display: block;
     color: white;
     text-align: center;
@@ -27,7 +27,7 @@ nav ul li a, nav ul li form button {
 }
 
 /* Cambiar el color de fondo cuando el enlace o botón es hover */
-nav ul li a:hover, nav ul li form button:hover {
+nav ul li a:hover, nav ul li form .menu-button:hover {
     background-color: #111;
 }
 
@@ -37,8 +37,8 @@ nav ul li form {
     padding: 0;
 }
 
-/* Estilo para los botones dentro de los formularios */
-nav ul li form button {
+/* Estilo específico para botones del menú */
+nav ul li form .menu-button {
     background: none;
     color: inherit;
     font: inherit;

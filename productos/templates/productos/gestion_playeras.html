@@ -3,23 +3,24 @@
 {% block title %}Gestionar Playeras{% endblock %}
 
 {% block content %}
-    <h1>Gestionar Playeras</h1>
+<h1>Gestionar Playeras</h1>
 
-    <!-- Formulario para crear o editar playera -->
-    <h2>{% if form.instance.pk %}Editar Playera{% else %}Agregar nueva Playera{% endif %}</h2>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        
-        {% if form.instance.pk %}
-            <button type="submit" class="btn">Guardar cambios</button>
-        {% else %}
-            <button type="submit" class="btn">Agregar Playera</button>
-        {% endif %}
-    </form>
+    <!-- Contenedor para aplicar estilos al formulario -->
+    <div class="formulario-playera">
+        <h2>{% if form.instance.pk %}Editar Playera{% else %}Agregar nueva Playera{% endif %}</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
 
+            <button type="submit" class="btn">
+                {% if form.instance.pk %}Guardar cambios{% else %}Agregar Playera{% endif %}
+            </button>
+        </form>
+    </div>
+
+    <!-- Tabla de playeras -->
     <h2>Lista de Playeras</h2>
-    <table>
+    <table class="tabla-playeras">
         <thead>
             <tr>
                 <th>Nombre</th>
@@ -43,17 +44,18 @@
                         <form method="post" style="display:inline;">
                             {% csrf_token %}
                             <input type="hidden" name="editar" value="{{ playera.id }}">
-                            <button type="submit" class="btn">Editar</button>
+                            <button type="submit" class="btn btn-editar">Editar</button>
                         </form>
                         <!-- Botón para eliminar -->
                         <form method="post" style="display:inline;" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta playera?');">
                             {% csrf_token %}
                             <input type="hidden" name="eliminar" value="{{ playera.id }}">
-                            <button type="submit" class="btn">Eliminar</button>
+                            <button type="submit" class="btn btn-eliminar">Eliminar</button>
                         </form>
                     </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
+
 {% endblock %}

@@ -1,0 +1,154 @@
+/* Contenedor de los formularios */
+.container {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px 40px;
+    max-width: 400px;
+    width: 100%;
+    margin: 40px auto; /* Centrado vertical con margen automático */
+    text-align: center;
+}
+
+/* Títulos de los formularios */
+.container h1 {
+    font-size: 1.8rem;
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+/* Formularios */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Botones */
+button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Enlaces */
+.container a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.container a:hover {
+    text-decoration: underline;
+}
+
+/* Contenedor del formulario */
+.formulario-playera {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Título del formulario */
+.formulario-playera h2 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Botón estilizado */
+.btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo para los campos del formulario */
+.formulario-playera form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Contenedor de la tabla */
+.tabla-playeras {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1rem;
+    text-align: left;
+}
+
+/* Estilo para el encabezado de la tabla */
+.tabla-playeras thead {
+    background-color: #007bff;
+    color: white;
+}
+
+.tabla-playeras thead th {
+    padding: 10px;
+    border: 1px solid #dddddd;
+}
+
+/* Estilo para las filas */
+.tabla-playeras tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.tabla-playeras tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Celdas de la tabla */
+.tabla-playeras td, .tabla-playeras th {
+    padding: 10px;
+    border: 1px solid #dddddd;
+}
+
+/* Botones en la tabla */
+.btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.btn-editar {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-editar:hover {
+    background-color: #218838;
+}
+
+.btn-eliminar {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-eliminar:hover {
+    background-color: #c82333;
+}

@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Panel de Administración de Pedidos</h1>
+  <h1 class="titulo-panel">Panel de Administración de Pedidos</h1>
 
-  <table>
+  <table class="tabla-playeras">
     <thead>
       <tr>
         <th>Nombre del Usuario</th>
@@ -23,12 +23,12 @@
           <td>
             <form method="POST" action="{% url 'productos:actualizar_estado_pedido' pedido.id %}">
               {% csrf_token %}
-              <select name="estado">
+              <select name="estado" class="select-estado">
                 <option value="En espera" {% if pedido.estado == 'En espera' %}selected{% endif %}>En espera</option>
                 <option value="Completado" {% if pedido.estado == 'Completado' %}selected{% endif %}>Completado</option>
                 <option value="Cancelado" {% if pedido.estado == 'Cancelado' %}selected{% endif %}>Cancelado</option>
               </select>
-              <button type="submit">Actualizar Estado</button>
+              <button type="submit" class="btn">Actualizar Estado</button>
             </form>
           </td>
         </tr>

@@ -3,6 +3,7 @@
 {% block title %}Iniciar Sesión{% endblock %}
 
 {% block content %}
+<div class="container">
     <h1>Iniciar Sesión</h1>
     <form method="post">
         {% csrf_token %}
@@ -10,4 +11,5 @@
         <button type="submit">Iniciar Sesión</button>
     </form>
     <p>¿No tienes una cuenta? <a href="{% url 'usuarios:registrar_usuario' %}">Regístrate aquí</a>.</p>
+</div>
 {% endblock %}
