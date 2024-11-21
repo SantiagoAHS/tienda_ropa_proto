@@ -39,6 +39,9 @@
                     <li><a href="{% url 'usuarios:login' %}">Login</a></li>
                 {% endif %}
                 <li><a href="{% url 'productos:lista_playeras' %}">Productos</a></li>
+                <li><a href="{% url 'usuarios:acerca' %}">Acerca De</a></li>
+            </ul>
+        </nav>
             </ul>
         </nav>
     </header>
@@ -50,7 +53,34 @@
     </main>
 
     <footer>
-        <!-- Opcional: Información de pie de página -->
+        <div class="footer-container">
+            <!-- Sección de redes sociales -->
+            <div class="social-media">
+                <h3>Síguenos en redes sociales</h3>
+                <a href="https://www.facebook.com" target="_blank">
+                    <img src="{% static 'icons/facebook.png' %}" alt="Facebook" class="social-icon">
+                </a>
+                <a href="https://www.twitter.com" target="_blank">
+                    <img src="{% static 'icons/twitter.png' %}" alt="Twitter" class="social-icon">
+                </a>
+                <a href="https://www.instagram.com" target="_blank">
+                    <img src="{% static 'icons/instagram.png' %}" alt="Instagram" class="social-icon">
+                </a>
+            </div>
+
+            <!-- Sección de contacto -->
+            <div class="contact">
+                <h3>Contáctanos</h3>
+                <p>Teléfono: +52 123 456 7890</p>
+                <p>Email: contacto@tienda.com</p>
+            </div>
+
+            <!-- Información de derechos reservados -->
+            <div class="rights">
+                <p>&copy; 2024 Tienda Personalizada. Todos los derechos reservados.</p>
+            </div>
+        </div>
     </footer>
+
 </body>
 </html>

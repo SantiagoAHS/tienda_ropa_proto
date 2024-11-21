@@ -8,11 +8,11 @@ def lista_playeras(request):
     return render(request, 'productos/lista_playeras.html', {'productos': productos})
 
 
-from django.shortcuts import render, get_object_or_404
-from .models import Playera, PlayeraPersonalizada
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Playera, PlayeraPersonalizada, Pedido
 from django.contrib.auth.decorators import login_required
 
-@login_required(login_url='usuarios:login') 
+@login_required(login_url='usuarios:login')
 def personalizar_playera(request, playera_id):
     playera = get_object_or_404(Playera, id=playera_id)
 
@@ -44,7 +44,8 @@ def personalizar_playera(request, playera_id):
             estado="En espera"  # Estado inicial del pedido
         )
 
-        return render(request, 'productos/personalizar_playera.html', {'playera': playera_personalizada})
+        # Redirigimos a la lista de pedidos
+        return redirect('productos:lista_pedidos')  # Asegúrate de que la URL de lista_pedidos esté bien definida
 
     return render(request, 'productos/personalizar_playera.html', {'playera': playera})
 

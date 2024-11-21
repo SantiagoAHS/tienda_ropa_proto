@@ -15,6 +15,9 @@ from django.shortcuts import render
 def inicio(request):
     return render(request, 'inicio.html')
 
+def acerca(request):
+    return render(request, 'acerca.html')
+
 # Vista para registro de usuario
 def registrar_usuario(request):
     if request.method == 'POST':

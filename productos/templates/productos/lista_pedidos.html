@@ -3,23 +3,26 @@
 {% block title %}Lista de Pedidos{% endblock %}
 
 {% block content %}
-    <h1>Lista de Pedidos</h1>
-
-    <ul>
+    <h1 style="color: #00FFFF;">Lista de Pedidos</h1>
+    <ul style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; list-style-type: none; padding: 0;">
         {% for pedido in pedidos %}
-            <li>
-                <strong>Nombre:</strong> {{ pedido.personalizacion.nombre_personalizado }}<br>
-                <strong>Número:</strong> {{ pedido.personalizacion.numero_personalizado }}<br>
-                <strong>Color:</strong>
-                
-                <strong>Escudo:</strong>
-                {% if pedido.personalizacion.escudo %}
-                    <img src="{{ pedido.personalizacion.escudo.url }}" alt="Escudo" style="width: 50px; height: 50px;">
-                {% else %}
-                    No disponible
-                {% endif %}
-                <br>
-                <strong>Fecha de creación:</strong> {{ pedido.personalizacion.fecha_creacion|date:"d/m/Y H:i" }}<br>
+            <li style="border: 1px solid #ddd; border-radius: 10px; overflow: hidden; text-align: center; padding: 10px;">
+                <div style="margin-bottom: 10px;">
+                    <!-- Mostrar la imagen del escudo si está disponible -->
+                    {% if pedido.personalizacion.escudo %}
+                        <img src="{{ pedido.personalizacion.escudo.url }}" alt="Escudo" style="width: 80px; height: 80px; object-fit: contain;">
+                    {% else %}
+                        <p>No disponible</p>
+                    {% endif %}
+                </div>
+
+                <!-- Información del pedido -->
+                <div style="margin-bottom: 5px; color: white; ">
+                    <strong>Nombre:</strong> {{ pedido.personalizacion.nombre_personalizado }}<br>
+                    <strong>Número:</strong> {{ pedido.personalizacion.numero_personalizado }}<br>
+                    <strong>Color:</strong> {{ pedido.personalizacion.color_personalizado }}<br>
+                    <strong>Fecha:</strong> {{ pedido.personalizacion.fecha_creacion|date:"d/m/Y H:i" }}
+                </div>
             </li>
         {% endfor %}
     </ul>
