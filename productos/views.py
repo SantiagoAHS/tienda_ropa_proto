@@ -118,7 +118,21 @@ def actualizar_estado_pedido(request, pedido_id):
         pedido.save()
 
     return render(request, 'productos/lista_pedidos_admin.html', {'pedidos': Pedido.objects.all()})
- 
+
+from django.shortcuts import render, get_object_or_404
+from .models import Pedido
+
+def detalles_pedido(request, pedido_id):
+    # Obtener el pedido usando el ID
+    pedido = get_object_or_404(Pedido, id=pedido_id)
+    
+    # Obtener la personalización asociada al pedido
+    personalizacion = pedido.personalizacion
+    
+    # Pasar los datos a la plantilla
+    return render(request, 'productos/detalles_pedido.html', {'pedido': pedido, 'personalizacion': personalizacion})
+
+
 
 
 

@@ -11,8 +11,12 @@
 </head>
 <body>
     <header>
-        <nav>
-            <ul>
+        <nav style="display: flex; justify-content: space-between; align-items: center;">
+            <!-- Logo al fondo a la derecha -->
+            <div>
+                <img src="{% static 'images/Logo PNG.png' %}" alt="Logo" style="height: 50px; width: auto;">
+            </div>
+            <ul style="display: flex; list-style-type: none; padding: 0; margin: 0;">
                 <!-- Enlace "Inicio" que redirige según el estado de autenticación -->
                 {% if user.is_authenticated %}
                     {% if request.session.tipo_usuario == 'Administrador' %}
@@ -40,8 +44,6 @@
                 {% endif %}
                 <li><a href="{% url 'productos:lista_playeras' %}">Productos</a></li>
                 <li><a href="{% url 'usuarios:acerca' %}">Acerca De</a></li>
-            </ul>
-        </nav>
             </ul>
         </nav>
     </header>

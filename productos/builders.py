@@ -37,7 +37,6 @@ class PlayeraPersonalizadaBuilder:
 
         return self.playera_personalizada
 
-
 class Director:
     def __init__(self, builder):
         self.builder = builder

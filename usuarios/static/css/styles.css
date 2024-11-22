@@ -72,6 +72,25 @@ nav ul li a:hover, nav ul li form .menu-button:hover {
     border-bottom: 4px solid rgba(0, 255, 255, 0.6); /* Línea debajo del texto */
 }
 
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column; /* Pone los items del menú en una columna */
+        height: auto; /* Ajusta la altura del menú */
+        padding: 0; /* Elimina cualquier padding extra */
+        width: 100%; /* Asegura que el menú ocupe todo el ancho */
+    }
+
+    nav ul li {
+        width: 100%; /* Hace que los elementos de la lista ocupen todo el ancho */
+        text-align: left; /* Alinea el texto a la izquierda */
+    }
+
+    nav ul li a {
+        padding: 10px 16px; /* Ajusta el padding para que el enlace tenga más espacio */
+        width: 100%; /* Hace que el enlace ocupe todo el ancho */
+    }
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -207,4 +226,46 @@ footer {
     margin-top: 20px;
     font-size: 0.9em;
     opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* Hace que los elementos se apilen en pantallas pequeñas */
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-container div {
+        min-width: 100%; /* Hace que cada div ocupe el 100% del ancho */
+        margin-bottom: 15px; /* Añade espaciado entre los bloques de links */
+    }
+
+    .links ul {
+        padding-left: 0;
+        margin-bottom: 10px; /* Añade espaciado entre los bloques de links */
+    }
+
+    .social-media a img {
+        width: 50px; /* Aumenta el tamaño de los íconos para pantallas pequeñas */
+        height: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main h1 {
+        font-size: 24px; /* Reduce el tamaño del título */
+    }
+
+    .main p {
+        font-size: 16px; /* Ajusta el tamaño de los párrafos */
+    }
+
+    .background-image {
+        object-fit: cover;
+        height: 100%; /* Asegura que la imagen cubra toda la altura disponible */
+    }
+
+    .image-section {
+        height: 50vh; /* Reduce la altura de la sección de imagen en pantallas pequeñas */
+    }
 }

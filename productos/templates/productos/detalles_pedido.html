@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 style="color: #00FFFF;">Detalles del Pedido</h1>
+
+  <div class="detalle-pedido" style="color: white;">
+    <p><strong>Usuario:</strong> {{ pedido.usuario.username }}</p>
+    <p><strong>Estado del Pedido:</strong> {{ pedido.estado }}</p>
+    <p><strong>Fecha de Creación:</strong> {{ pedido.fecha_creacion }}</p>
+    
+    <h2 style="color: #00FFFF;">Detalles de la Personalización</h2>
+    <p><strong>Nombre Personalizado:</strong> {{ personalizacion.nombre_personalizado }}</p>
+    <p><strong>Número Personalizado:</strong> {{ personalizacion.numero_personalizado }}</p>
+    <p><strong>Color Personalizado:</strong> {{ personalizacion.color_personalizado }}</p>
+    <p><strong>Escudo:</strong></p>
+    {% if personalizacion.escudo %}
+      <img src="{{ personalizacion.escudo.url }}" alt="Escudo Personalizado" style="max-width: 200px;">
+    {% else %}
+      <p>No se ha subido un escudo.</p>
+    {% endif %}
+    
+    <p><strong>Fecha de Creación de la Personalización:</strong> {{ personalizacion.fecha_creacion }}</p>
+    
+    <a href="{% url 'productos:lista_pedidos_admin' %}" class="btn">Volver al Panel</a>
+  </div>
+{% endblock %}

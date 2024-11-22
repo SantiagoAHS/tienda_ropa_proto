@@ -6,7 +6,7 @@
     padding: 20px 40px;
     max-width: 400px;
     width: 100%;
-    margin: 40px auto; /* Centrado vertical con margen automático */
+    margin: 40px auto;
     text-align: center;
 }
 
@@ -151,4 +151,75 @@ button:hover {
 
 .btn-eliminar:hover {
     background-color: #c82333;
+}
+
+/* Media Queries para Responsividad */
+
+/* Para pantallas pequeñas (móviles) */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px 25px;
+        max-width: 100%;
+        margin: 20px auto;
+    }
+
+    .container h1 {
+        font-size: 1.5rem;
+    }
+
+    .formulario-playera {
+        padding: 15px;
+        max-width: 100%;
+    }
+
+    .formulario-playera h2 {
+        font-size: 1.5rem;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .tabla-playeras td, .tabla-playeras th {
+        padding: 8px;
+    }
+
+    /* Ajuste en las celdas para pantallas pequeñas */
+    .tabla-playeras td, .tabla-playeras th {
+        font-size: 0.9rem;
+    }
+}
+
+/* Para pantallas medianas (tabletas) */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 30px;
+        max-width: 90%;
+    }
+
+    .formulario-playera {
+        padding: 20px;
+    }
+
+    .btn {
+        font-size: 15px;
+    }
+}
+
+/* Para pantallas grandes */
+@media (min-width: 1200px) {
+    .container {
+        padding: 20px 40px;
+        max-width: 600px;
+    }
+
+    .formulario-playera {
+        max-width: 600px;
+        padding: 25px;
+    }
+
+    .btn {
+        font-size: 18px;
+    }
 }
